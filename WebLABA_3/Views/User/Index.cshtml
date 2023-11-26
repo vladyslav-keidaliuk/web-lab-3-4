@@ -1,0 +1,49 @@
+﻿
+@model List<User>
+
+<h2>User List</h2>
+
+
+<form asp-action="Index" method="get">
+    <p>
+        <label>Search by username:</label>
+        <input type="text" name="searchString"/>
+        <input type="submit" value="Search"/>
+    </p>
+    <p>
+      <label>Search by user ID:</label>
+        <input type="number" name="userId"/>
+        <input type="submit" value="Filter"/>
+    </p>
+</form>
+ 
+
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>User ID</th>
+        <th>Name</th>
+        <th>RoleID</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.UserId</td>
+            <td>@user.Name</td>
+            <td>@user.RoleId</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@user.UserId" class="btn btn-warning">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@user.UserId" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<div>
+    <a asp-controller="User" asp-action="Create" class="btn btn-primary">Create New User</a>
+</div>

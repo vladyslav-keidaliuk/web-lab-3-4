@@ -1,0 +1,30 @@
+﻿@model List<Role>
+
+<h2>Roles List</h2>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Role ID</th>
+        <th>Name</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var author in Model)
+    {
+        <tr>
+            <td>@author.RoleId</td>
+            <td>@author.Name</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@author.RoleId" class="btn btn-warning" >Edit</a> |
+                <a asp-action="Delete" asp-route-id="@author.RoleId" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="Create" class="btn btn-primary">Create New Role</a>
+</div>
